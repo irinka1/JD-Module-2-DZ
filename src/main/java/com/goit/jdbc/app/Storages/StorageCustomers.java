@@ -1,8 +1,17 @@
-package com.goit.jdbc.app;
+package com.goit.jdbc.app.Storages;
+
+import com.goit.jdbc.app.Companies;
+import com.goit.jdbc.app.Customers;
+import com.goit.jdbc.app.DAOs.CustomersDAO;
 
 import java.sql.*;
 
-public class Storage implements DevDAO{
+import static com.goit.jdbc.app.DAOs.CompaniesDAO.*;
+import static com.goit.jdbc.app.DAOs.CustomersDAO.selectCustomersSt;
+
+public class StorageCustomers implements CustomersDAO {
+
+
     private String connectionURL = "jdbc:mysql://localhost/module2";
     private String user = "root";
     private String pass = "Bhbirf29";
@@ -11,7 +20,7 @@ public class Storage implements DevDAO{
     private Statement statement;
 
 
-    public Storage() {
+    public StorageCustomers() {
         try {
             Class.forName("com.mysql.jdbc.Driver");  //драйвер, позволяет загрузить через форнейм
             connection = DriverManager.getConnection(connectionURL, user, pass); //соединяем
@@ -21,19 +30,17 @@ public class Storage implements DevDAO{
         }
     }
 
-
-    public void createDeveloper(Developer developer) {
+    public void createCustomers(Customers customers) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connectionURL, user, pass);
-            PreparedStatement statement = connection.prepareStatement(createSt, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, developer.getFirstName());
-            statement.setString(2, developer.getLastName());
+            PreparedStatement statement = connection.prepareStatement(createCustomersSt, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, customers.getName());
             statement.execute();
 
             ResultSet generatedkeys = statement.getGeneratedKeys();
             if (generatedkeys.next()) {
-                developer.setId(generatedkeys.getLong(1));
+                customers.setId(generatedkeys.getLong(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,19 +53,18 @@ public class Storage implements DevDAO{
         }
     }
 
-    public Developer selectSt(Long id) {
-        Developer developer = null;
+    public Customers selectCustomers(Long id) {
+        Customers customers = null;
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connectionURL, user, pass);
-            PreparedStatement statement = connection.prepareStatement(selectSt);
+            PreparedStatement statement = connection.prepareStatement(selectCustomersSt);
             statement.setLong(1, id);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                developer = new Developer();
-                developer.setId(rs.getLong("ID"));
-                developer.setFirstName(rs.getString("FIRST_NAME"));
-                developer.setLastName(rs.getString("LAST_NAME"));
+                customers = new Customers();
+                customers.setId(rs.getLong("ID"));
+                customers.setName(rs.getString("NAME"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,17 +75,16 @@ public class Storage implements DevDAO{
                 e.printStackTrace();
             }
         }
-        return developer;
+        return customers;
     }
 
-    public void updateDeveloper(Developer developer) {
+    public void updateCustomers(Customers customers) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connectionURL, user, pass);
-            PreparedStatement statement = connection.prepareStatement(updateSt);
-            statement.setString(1, developer.getFirstName());
-            statement.setString(2, developer.getLastName());
-            statement.setLong(3, developer.getId());
+            PreparedStatement statement = connection.prepareStatement(updateCustomersSt);
+            statement.setString(1, customers.getName());
+            statement.setLong(2, customers.getId());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,12 +97,12 @@ public class Storage implements DevDAO{
         }
     }
 
-    public void deleteDeveloper(Developer developer) {
+    public void deleteCustomers(Customers customers) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(connectionURL, user, pass);
-            PreparedStatement statement = connection.prepareStatement(deleteSt);
-            statement.setLong(1, developer.getId());
+            PreparedStatement statement = connection.prepareStatement(deleteCustomersSt);
+            statement.setLong(1, customers.getId());
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -108,25 +113,5 @@ public class Storage implements DevDAO{
                 e.printStackTrace();
             }
         }
-    }
-
-    public static void main(String[] args) throws SQLException {
-        Storage storage = new Storage();
-
-        /*Developer dev = new Developer();   //create new developer
-        dev.setFirstName("Roma");
-        dev.setLastName("Dodo");
-        storage.createDeveloper(dev);*/
-
-       /*Developer developer = storage.selectSt(1); //update data developer by ID 1
-        developer.setFirstName("Volodya");
-        storage.updateDeveloper(developer);*/
-
-       /*Developer developer = new Developer();    //find developer by ID 1
-        System.out.println(storage.selectSt(1L));*/
-
-        Developer developer = storage.selectSt(2L);   //delete developers by ID 2
-        storage.deleteDeveloper(developer);
     }
 }
-

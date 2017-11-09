@@ -1,4 +1,6 @@
-package com.goit.jdbc.app;
+package com.goit.jdbc.app.DAOs;
+
+import com.goit.jdbc.app.Developer;
 
 public interface DevDAO {
     public static final String selectAll = "SELECT * FROM DEVELOPER";
