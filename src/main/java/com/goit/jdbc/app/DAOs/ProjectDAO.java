@@ -1,6 +1,6 @@
 package com.goit.jdbc.app.DAOs;
 
-import com.goit.jdbc.app.Project;
+import com.goit.jdbc.app.Entities.Project;
 
 public interface ProjectDAO {
     public static final String selectAll = "SELECT * FROM PROJECT";

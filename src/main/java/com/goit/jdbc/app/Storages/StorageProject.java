@@ -1,6 +1,6 @@
 package com.goit.jdbc.app.Storages;
 
-import com.goit.jdbc.app.Project;
+import com.goit.jdbc.app.Entities.Project;
 import com.goit.jdbc.app.DAOs.ProjectDAO;
 
 import java.sql.*;

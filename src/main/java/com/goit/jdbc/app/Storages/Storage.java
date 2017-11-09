@@ -1,7 +1,7 @@
 package com.goit.jdbc.app.Storages;
 
 import com.goit.jdbc.app.DAOs.DevDAO;
-import com.goit.jdbc.app.Developer;
+import com.goit.jdbc.app.Entities.Developer;
 
 import java.sql.*;
 

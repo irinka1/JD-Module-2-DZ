@@ -1,5 +1,6 @@
 package com.goit.jdbc.app;
 
+import com.goit.jdbc.app.Entities.*;
 import com.goit.jdbc.app.Storages.*;
 
 import java.sql.SQLException;

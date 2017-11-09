@@ -1,4 +1,4 @@
-package com.goit.jdbc.app;
+package com.goit.jdbc.app.Entities;
 
 public class Developer {
     private long id;

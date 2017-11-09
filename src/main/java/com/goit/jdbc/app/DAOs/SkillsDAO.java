@@ -1,6 +1,6 @@
 package com.goit.jdbc.app.DAOs;
 
-import com.goit.jdbc.app.Skills;
+import com.goit.jdbc.app.Entities.Skills;
 
 public interface SkillsDAO {
     public static final String selectAllSkills = "SELECT * FROM SKILLS";

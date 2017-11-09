@@ -1,12 +1,11 @@
-package com.goit.jdbc.app;
+package com.goit.jdbc.app.Entities;
 
-import java.math.BigDecimal;
+public class Companies {
 
-public class Project {
+
 
     private long id;
     private String Name;
-    private BigDecimal Cost;
 
     public long getId() {
         return id;
@@ -25,17 +24,8 @@ public class Project {
     }
 
 
-
-    public BigDecimal getCost() {
-        return Cost;
-    }
-
-    public void setCost(BigDecimal Cost) {
-        this.Cost = Cost;
-    }
-
     @Override
     public String toString() {
-        return Name + ", " + Cost;
+        return Name;
     }
 }

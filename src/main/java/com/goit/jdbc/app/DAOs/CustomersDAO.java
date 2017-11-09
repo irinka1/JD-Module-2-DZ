@@ -1,7 +1,6 @@
 package com.goit.jdbc.app.DAOs;
 
-import com.goit.jdbc.app.Companies;
-import com.goit.jdbc.app.Customers;
+import com.goit.jdbc.app.Entities.Customers;
 
 public interface CustomersDAO {
     public static final String selectAllCustomers = "SELECT * FROM CUSTOMERS";

@@ -1,7 +1,6 @@
 package com.goit.jdbc.app.DAOs;
 
-import com.goit.jdbc.app.Companies;
-import com.goit.jdbc.app.Skills;
+import com.goit.jdbc.app.Entities.Companies;
 
 public interface CompaniesDAO {
 

@@ -1,5 +1,5 @@
 package com.goit.jdbc.app.Storages;
-import com.goit.jdbc.app.Companies;
+import com.goit.jdbc.app.Entities.Companies;
 import java.sql.*;
 
 import static com.goit.jdbc.app.DAOs.CompaniesDAO.*;

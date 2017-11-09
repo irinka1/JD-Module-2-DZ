@@ -1,13 +1,9 @@
 package com.goit.jdbc.app.Storages;
 
-import com.goit.jdbc.app.Companies;
-import com.goit.jdbc.app.Customers;
+import com.goit.jdbc.app.Entities.Customers;
 import com.goit.jdbc.app.DAOs.CustomersDAO;
 
 import java.sql.*;
-
-import static com.goit.jdbc.app.DAOs.CompaniesDAO.*;
-import static com.goit.jdbc.app.DAOs.CustomersDAO.selectCustomersSt;
 
 public class StorageCustomers implements CustomersDAO {
 

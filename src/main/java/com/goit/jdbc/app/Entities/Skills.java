@@ -1,6 +1,9 @@
-package com.goit.jdbc.app;
+package com.goit.jdbc.app.Entities;
 
-public class Customers {
+import java.math.BigDecimal;
+
+public class Skills {
+
 
     private long id;
     private String Name;
